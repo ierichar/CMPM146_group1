@@ -13222,6 +13222,7 @@ GameObject:
   - component: {fileID: 1689780746}
   - component: {fileID: 1689780745}
   - component: {fileID: 1689780748}
+  - component: {fileID: 1689780749}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -13287,13 +13288,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689780744}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.043, y: 0.331, z: -0.159}
+  m_LocalRotation: {x: 0.46174863, y: 0, z: 0, w: 0.8870109}
+  m_LocalPosition: {x: -2, y: 20, z: -85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1854275122}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 55, y: 0, z: 0}
 --- !u!114 &1689780748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13326,6 +13327,21 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &1689780749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689780744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88adbb6a902f4f14db651d8a3ae500e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panBorderThickness: 10
+  smoothSpeed: 10
+  scrollSpeed: 20
 --- !u!1001 &1718861300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14422,7 +14438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1854275118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14506,10 +14522,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1854275117}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 3.9, z: -70.7}
+  m_LocalPosition: {x: 2, y: 13.66, z: -70.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1689780747}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

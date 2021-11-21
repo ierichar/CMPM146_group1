@@ -10,7 +10,6 @@ public class NewBehaviourScript : MonoBehaviour
     const int clampDownwardAngleY = 85;
     private float movementSpeed = 5f;
     private bool menu = false;
-    private bool escReleased = true;
     Vector3 currentEulerAngles;
     public Transform camera;
     // Update is called once per frame
