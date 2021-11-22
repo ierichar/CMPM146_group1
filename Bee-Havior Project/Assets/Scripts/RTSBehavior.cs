@@ -10,6 +10,10 @@ public class RTSBehavior : MonoBehaviour
     public float panBorderThickness = 10f;
     public float smoothSpeed = 100f;
     public float scrollSpeed = 500f;
+    public float rotationAmount;
+    public float movementSpeed;
+    public Vector3 newPosition;
+    public Quaternion newRotation;
 
     // Update is called once per frame
     void Update()
@@ -23,19 +27,18 @@ public class RTSBehavior : MonoBehaviour
             panSpeed = 20f;
         }
         //If the player moves the cursor on the border or presses a wasd key then the camera will move given the pan speed
-        if(Input.GetKey("w") || Input.mousePosition.y >= Screen.height - panBorderThickness) {
+        if(Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow) || Input.mousePosition.y >= Screen.height - panBorderThickness) {
             position.z += panSpeed * Time.deltaTime;
         }
-        if(Input.GetKey("s") || Input.mousePosition.y <= panBorderThickness) {
+        if(Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow) || Input.mousePosition.y <= panBorderThickness) {
             position.z -= panSpeed * Time.deltaTime;
         }
-        if(Input.GetKey("d") || Input.mousePosition.x >= Screen.width - panBorderThickness) {
+        if(Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow) || Input.mousePosition.x >= Screen.width - panBorderThickness) {
             position.x += panSpeed * Time.deltaTime;
         }
-        if(Input.GetKey("a") || Input.mousePosition.x <= panBorderThickness) {
+        if(Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow) || Input.mousePosition.x <= panBorderThickness) {
             position.x -= panSpeed * Time.deltaTime;
         }
-
         //Setting the border that the camera will stop at so it doesn't go too far off the map. 
         //Hard set values since our map is not a perfect square. 
         position.x = Mathf.Clamp(position.x, -80, 88);
