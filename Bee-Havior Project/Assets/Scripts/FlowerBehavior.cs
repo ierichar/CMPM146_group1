@@ -10,9 +10,9 @@ public class FlowerBehavior : MonoBehaviour
     // timer for replenish Nectar
     private int Nectar;
     private bool depleted;
-    SphereCollider collider;
+    SphereCollider objCollider;
     int replenishTime;
-    int timer = 0;
+    float timer = 0;
     BeeBehavior beeScript;
 
     // Start is called before the first frame update
@@ -21,7 +21,7 @@ public class FlowerBehavior : MonoBehaviour
         // consider frame rate and how fast bee consumes 1 nectar
         Nectar = Random.Range(1, 5);//amount of nectar
         replenishTime = Random.Range(1, 3);//num of minutes till replenish
-        collider = GetComponent<SphereCollider>();
+        objCollider = GetComponent<SphereCollider>();
         beeScript = GetComponent<BeeBehavior>();
     }
 
@@ -32,14 +32,14 @@ public class FlowerBehavior : MonoBehaviour
         //disable its collider because its inactive
         //start incrementing timer
         if(depleted){
-            collider.enabled = false;
+            objCollider.enabled = false;
             timer += Time.deltaTime;
         }
         //if  timer has reached the replenishTime minutes
         //enable the collider and reset variables such
         //as nectar, timer, depleted
         if(timer >= replenishTime*60){
-            collider.enabled = true;
+            objCollider.enabled = true;
             depleted = false;
             Nectar = Random.Range(1, 5);
             timer = 0;
