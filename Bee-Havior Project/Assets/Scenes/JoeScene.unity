@@ -6197,7 +6197,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 8
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &724011936
 MeshRenderer:
@@ -12897,6 +12897,7 @@ GameObject:
   - component: {fileID: 1549933462}
   - component: {fileID: 1549933461}
   - component: {fileID: 1549933460}
+  - component: {fileID: 1549933463}
   m_Layer: 0
   m_Name: BeeModel
   m_TagString: Untagged
@@ -12980,6 +12981,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1549933458}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1549933463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549933458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d05b9ea9e0c16f84b844bc2a1161c34b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1553811279
 PrefabInstance:
   m_ObjectHideFlags: 0
