@@ -55,6 +55,7 @@ public class FlowerBehavior : MonoBehaviour
         }
     }
     private void OnTriggerEnter(Collider other){
+        Debug.Log("Trigger went off");
         //send signal to bee
         //beeScript.sendSignal(found_a_Flower);
     }
