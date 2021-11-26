@@ -22,7 +22,7 @@ public class FlowerBehavior : MonoBehaviour
         Nectar = Random.Range(1, 5);//amount of nectar
         replenishTime = Random.Range(1, 3);//num of minutes till replenish
         objCollider = GetComponent<SphereCollider>();
-        beeScript = GetComponent<BeeBehavior>();
+        timer = 0;
     }
 
     // Update is called once per frame
@@ -55,8 +55,12 @@ public class FlowerBehavior : MonoBehaviour
         }
     }
     private void OnTriggerEnter(Collider other){
-        Debug.Log("Trigger went off");
-        //send signal to bee
-        //beeScript.sendSignal(found_a_Flower);
+        if(other.gameObject.CompareTag("Bee")){
+            Debug.Log("Trigger went off");
+            Debug.Log(suckNectar());
+            Debug.Log(Nectar);
+            //send signal to bee
+            //beeScript.sendSignal(found_a_Flower);
+        }
     }
 }
