@@ -80,6 +80,10 @@ public class BeeBehavior : MonoBehaviour
         return false;
     }
 
+    private void explore(){
+        
+    }
+
 
     private void OnCollisionEnter(Collision other) {
         Debug.Log("test");

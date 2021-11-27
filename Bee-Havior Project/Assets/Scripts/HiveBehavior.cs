@@ -25,8 +25,6 @@ public class HiveBehavior : MonoBehaviour
         Debug.Log("starting number of temp: " + temp.Length);
         Debug.Log("temp @0: " + Bees[0]);
 
-        //number of  times FixedUpdate runs per second
-        Time.fixedDeltaTime = 50;
     }
 
     void FixedUpdate(){
@@ -36,8 +34,7 @@ public class HiveBehavior : MonoBehaviour
     }
 
     // Update is called once per frame for rendering
-    void Update()
-    {
-        
+    void Update(){
+
     }
 }
