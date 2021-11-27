@@ -79,16 +79,16 @@ public class CameraController : MonoBehaviour
             movementSpeed = normalSpeed;
         }
         //If the player moves the cursor on the border or presses a wasd key then the camera will move given the pan speed
-        if(Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow) || Input.mousePosition.y >= Screen.height - panBorderThickness) {
+        if(Input.GetKey("w") || Input.GetKey(KeyCode.UpArrow)) {
             newPosition += (transform.forward * movementSpeed);
         }
-        if(Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow) || Input.mousePosition.y <= panBorderThickness) {
+        if(Input.GetKey("s") || Input.GetKey(KeyCode.DownArrow)) {
             newPosition += (transform.forward * -movementSpeed);
         }
-        if(Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow) || Input.mousePosition.x >= Screen.width - panBorderThickness) {
+        if(Input.GetKey("d") || Input.GetKey(KeyCode.RightArrow)) {
             newPosition += (transform.right * movementSpeed);
         }
-        if(Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow) || Input.mousePosition.x <= panBorderThickness) {
+        if(Input.GetKey("a") || Input.GetKey(KeyCode.LeftArrow)) {
             newPosition += (transform.right * -movementSpeed);
         }
         if(Input.GetKey("q")) {
