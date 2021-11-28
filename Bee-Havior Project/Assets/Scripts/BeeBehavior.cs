@@ -40,9 +40,11 @@ public class BeeBehavior : MonoBehaviour
             // go to target
             agent.SetDestination(currentTarget.transform.position);
         }
-        if (atTarget && currentTarget.CompareTag("Flower") && nectar < 100) {
-            // slurp nectar
-            nectar += 1;
+        if (atTarget && !currentTarget==null && nectar < 100) {
+            if(currentTarget.CompareTag("Flower")){
+                // slurp nectar
+                nectar += 1;
+            }
         }
         if (nectar >= 100) {
             // go home
@@ -78,13 +80,19 @@ public class BeeBehavior : MonoBehaviour
         return false;
     }
 
+    private void explore(){
+        
+    }
 
-    private void OnCollision(Collision other) {
+
+    private void OnCollisionEnter(Collision other) {
+        Debug.Log("test");
         if (other.gameObject.CompareTag("Hive")) {
             goingHome = false;
             atTarget = true;
         }
         if (other.gameObject.CompareTag("Flower")) {
+
             isExploring = false;
             foundFlower = true;
             atTarget = true;
