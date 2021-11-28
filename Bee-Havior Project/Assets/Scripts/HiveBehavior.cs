@@ -21,9 +21,9 @@ public class HiveBehavior : MonoBehaviour
         Bees = temp;
         //temp = null;
 
-        Debug.Log("starting number of bees: " + Bees.Length);
-        Debug.Log("starting number of temp: " + temp.Length);
-        Debug.Log("temp @0: " + Bees[0]);
+        //Debug.Log("starting number of bees: " + Bees.Length);
+        //Debug.Log("starting number of temp: " + temp.Length);
+        //Debug.Log("temp @0: " + Bees[0]);
 
     }
 

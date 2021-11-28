@@ -63,6 +63,7 @@ public class BeeBehavior : MonoBehaviour
     //             1 for "go home"
     // Post: bool - true if signal was recieved, else false
     bool recieveSignal(int signal) {
+        
         // 0: Find flower
         if (signal == 0) {
             foundFlower = false;
@@ -81,7 +82,7 @@ public class BeeBehavior : MonoBehaviour
     }
 
     private void explore(){
-        
+
     }
 
 
