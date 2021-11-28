@@ -12,6 +12,7 @@ public class BeeBehavior : MonoBehaviour
     public bool isExploring;
     public bool goingHome;
     public bool atTarget;
+    public bool isGoingHome;
     public int nectar;
     private int maxNectar;
     // NOTE: here we potentially include "Boid" behavior
@@ -66,6 +67,12 @@ public class BeeBehavior : MonoBehaviour
 
         // Impliment:
         // isExploring pathfinding
+    }
+
+    // neutralState()
+    // Reset all state values to neutral (AKA bee spawns in hive)
+    void neutralState() {
+        
     }
 
     // recieveSignal()
