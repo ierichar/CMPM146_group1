@@ -14,7 +14,7 @@ public class FlowerBehavior : MonoBehaviour
     int replenishTime;
     float timer = 0;
     BeeBehavior beeScript;
-    TestNavMesh testScript;
+    TestNavMesh beeTest;
 
     // Start is called before the first frame update
     void Start()
@@ -58,11 +58,11 @@ public class FlowerBehavior : MonoBehaviour
     private void OnTriggerEnter(Collider other){
         if(other.gameObject.CompareTag("Bee")){
             Debug.Log("Trigger went off");
-            Debug.Log(suckNectar());
-            Debug.Log(Nectar);
+            //Debug.Log(suckNectar());
+            //Debug.Log(Nectar);
             //send signal to bee
-            testScript = other.gameObject.GetComponent<TestNavMesh>();
-            testScript.foundFlowerFunc(transform.position);
+            beeTest = other.gameObject.GetComponent<TestNavMesh>();
+            beeTest.foundFlowerFunc(transform.position);
             //beeScript.sendSignal(found_a_Flower);
         }
     }

@@ -6,13 +6,15 @@ using UnityEngine.AI;
 public class TestNavMesh : MonoBehaviour
 {
     private NavMeshAgent agent;
-    private GameObject[] flower;
+    private GameObject[] flowers;
     public float aggroRadius;
     private Vector3 startPos;
     private int flowerToPick;
 
     private bool foundFlower = false;
     private Vector3 flowerPos;
+    private FlowerBehavior flower;
+    private float Nectar;
 
 
     //-------------------------
@@ -21,8 +23,9 @@ public class TestNavMesh : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Nectar = 0;
         agent = GetComponent<NavMeshAgent>();
-        flower = GameObject.FindGameObjectsWithTag("Flower");
+        //flower = GameObject.FindGameObjectsWithTag("Flower");
         startPos = transform.position;
         flowerToPick = Random.Range(0,2);
     }
@@ -31,6 +34,7 @@ public class TestNavMesh : MonoBehaviour
     void Update()
     {
         if(!foundFlower){
+            Debug.Log("Flower not found");
         //explore code
             agent.SetDestination(transform.position+transform.forward);
             float rotateChance = Random.Range(0.0f, 10.0f);
@@ -40,10 +44,22 @@ public class TestNavMesh : MonoBehaviour
                 transform.RotateAround(transform.position, Vector3.up, rotateAmount);
             }
         }else{
-            agent.SetDestination(flowerPos);
-            if(agent.position == agent.destination){
+            Debug.Log("Flower Is found");
+            Vector3  temp = new Vector3(flowerPos.x, 1.69f, flowerPos.z);
+            Debug.Log("Set Destination: " + agent.SetDestination(flowerPos));
+            Debug.Log(agent.transform.position.x + " | " + agent.destination.x);
+            Debug.Log(agent.transform.position.z + " | " + agent.destination.z);
+            if(agent.transform.position.x == agent.destination.x &&
+               agent.transform.position.z == agent.destination.z){
+                   Debug.Log("Should Suck Nectar");
                 //Pick up testing of suckNectar here
                 //Need to get script of flower that was found
+                if(flower.suckNectar()){ //(!flower.suckNectar() || Nectar==5)
+                    //if full on nectar should go home
+                    //if no full keep exploring
+                    //for now just explore after collecting
+                    Debug.Log("Nectar level is: " + Nectar);
+                }
             }else{
                 Debug.Log("Failed");
             }
@@ -63,7 +79,19 @@ public class TestNavMesh : MonoBehaviour
     }
 
     public void foundFlowerFunc(Vector3 pos){
+        Debug.Log("foundFlowerFunc was called");
         foundFlower = true;
         flowerPos = pos;
+    }
+
+    void OnCollisionEnter(Collision collision){
+        Debug.Log("Bee hit something: " + collision);
+        if(collision.gameObject.CompareTag("Flower")){
+            Debug.Log("Object is a flower");
+            flower = collision.gameObject.GetComponent<FlowerBehavior>();
+            foundFlower = true;
+            flowerPos = collision.transform.position;
+            Debug.Log(flowerPos);
+        }
     }
 }
