@@ -20,9 +20,9 @@ public class BeeBehavior : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         foundFlower = false;
-        isExploring = false;
+        isExploring = true;
         goingHome = false;
-        atTarget = true;
+        atTarget = false;
 
         nectar = 0;
 

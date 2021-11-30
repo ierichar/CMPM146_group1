@@ -7,7 +7,7 @@ public class TestNavMesh : MonoBehaviour
 {
     private NavMeshAgent agent;
     private GameObject[] flowers;
-    public float aggroRadius;
+    private float aggroRadius;
     private Vector3 startPos;
     private int flowerToPick;
 

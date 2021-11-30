@@ -45,10 +45,17 @@ public class HiveBehavior : MonoBehaviour
         Bees = temp;
         //temp = null;
 
-        Debug.Log("starting number of bees: " + Bees.Length);
-        Debug.Log("starting number of temp: " + temp.Length);
-        Debug.Log("temp @0: " + Bees[0]);
+        //Debug.Log("starting number of bees: " + Bees.Length);
+        //Debug.Log("starting number of temp: " + temp.Length);
+        //Debug.Log("temp @0: " + Bees[0]);
 
+    }
+
+
+
+    // Update is called once per frame for rendering
+    void Update(){
+        return;
     }
 
     void FixedUpdate(){
@@ -61,11 +68,6 @@ public class HiveBehavior : MonoBehaviour
         // From research: it requires nectar from 2 million flowers for
         //  1 lb of honey. That conversion rate is crazy small
         Honey += (BeeQueue.Count * 0.012f);
-    }
-
-    // Update is called once per frame for rendering
-    void Update(){
-
     }
 
     // deployNBees()
@@ -106,13 +108,17 @@ public class HiveBehavior : MonoBehaviour
 
     // createBee()
     // Add new bee clone to BeeQueue
+    //NEED to return by reference so the attached scripts have a gameobject to access?
     GameObject createBee() {
+    //ref GameObject createBee() {
         // Create clone GameObject and include into queue of bees in hive
-        GameObject clone = Instantiate(bee, transform.position + transform.forward * 2, Quaternion.identity);
+         GameObject clone = Instantiate(bee, transform.position + transform.forward * 2, Quaternion.identity);
+        //ref GameObject toReturn = ref clone;
 
         // Set initial state
         clone.GetComponent<BeeBehavior>().neutralState();
         return clone;
+        //return ref clone;
     }
 
     private void OnCollision(GameObject other) {
