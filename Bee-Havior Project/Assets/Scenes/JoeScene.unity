@@ -15370,7 +15370,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 800b72b32f7890e4492f3d41db0e4241, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bee: {fileID: 0}
+  Nectar: 0
+  bee: {fileID: 1974902503}
   totalBees: 0
   requiredNectar: 0
   enemyHealth: 0
@@ -17059,7 +17060,6 @@ GameObject:
   - component: {fileID: 1974902505}
   - component: {fileID: 1974902504}
   - component: {fileID: 1974902509}
-  - component: {fileID: 1974902510}
   - component: {fileID: 1974902511}
   m_Layer: 0
   m_Name: Bee
@@ -17097,7 +17097,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974902503}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d05b9ea9e0c16f84b844bc2a1161c34b, type: 3}
   m_Name: 
@@ -17107,6 +17107,8 @@ MonoBehaviour:
   goingHome: 0
   atTarget: 0
   nectar: 0
+  rotateChance: 0
+  rotateAmount: 0
 --- !u!23 &1974902506
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -17184,19 +17186,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1974902510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1974902503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7a66d87cf0ce244f89eaff7ec1240e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aggroRadius: 500
 --- !u!54 &1974902511
 Rigidbody:
   m_ObjectHideFlags: 0

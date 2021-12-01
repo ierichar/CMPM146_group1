@@ -62,6 +62,7 @@ public class HiveBehavior : MonoBehaviour
         //Does hive produce honey or bees?
         //If bees in hive produce honey?
         //for each bee increase rate of nectar to honey conversion
+        //if(BeeQueue.)
         if (Nectar >= 0 && BeeQueue.Count > 0) {
             Nectar -= (BeeQueue.Count);
         }
@@ -112,7 +113,7 @@ public class HiveBehavior : MonoBehaviour
     GameObject createBee() {
     //ref GameObject createBee() {
         // Create clone GameObject and include into queue of bees in hive
-         GameObject clone = Instantiate(bee, transform.position + transform.forward * 2, Quaternion.identity);
+        GameObject clone = Instantiate(bee, transform.position + transform.forward * 2, Quaternion.identity);
         //ref GameObject toReturn = ref clone;
 
         // Set initial state
