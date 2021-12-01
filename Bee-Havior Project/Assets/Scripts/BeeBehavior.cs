@@ -8,11 +8,12 @@ public class BeeBehavior : MonoBehaviour
     GameObject currentTarget;
     GameObject hive;
     GameObject currentFlower;
-    private bool foundFlower;
-    private bool isExploring;
-    private bool goingHome;
-    private bool atTarget;
-    private int nectar;
+    public bool foundFlower;
+    public bool isExploring;
+    public bool goingHome;
+    public bool atTarget;
+    public float nectar;
+    private float maxNectar;
     // NOTE: here we potentially include "Boid" behavior
     //       and check other bees in our radius to prevent
     //       collision and simulate a swarm
@@ -22,12 +23,14 @@ public class BeeBehavior : MonoBehaviour
     {
         // Bee is at hive
         agent = GetComponent<NavMeshAgent>();
-        atTarget = true;
+
         foundFlower = false;
         isExploring = false;
         goingHome = false;
+        atTarget = true;
 
         nectar = 0;
+        maxNectar = 5;
 
         currentTarget = null;
         hive = GameObject.FindGameObjectWithTag("Hive");
@@ -36,24 +39,43 @@ public class BeeBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Go to target
         if (currentTarget != null && !atTarget) {
-            // go to target
             agent.SetDestination(currentTarget.transform.position);
         }
-        if (atTarget && !currentTarget==null && nectar < 100) {
-            if(currentTarget.CompareTag("Flower")){
-                // slurp nectar
-                nectar += 1;
+        // Slurp nectar from currentFlower (AKA currentTarget)
+        if (atTarget && currentTarget.CompareTag("Flower") && nectar < maxNectar) {
+            if (currentTarget.GetComponent<FlowerBehavior>().suckNectar()) {
+                nectar++;
+            } else {
+                isExploring = true;
+                foundFlower = false;
+                atTarget = false;
+                goingHome = false;
             }
         }
-        if (nectar >= 100) {
-            // go home
+        // Go home
+        if (nectar >= maxNectar) {
+            isExploring = false;
             atTarget = false;
             goingHome = true;
             currentTarget = hive;
         }
+
         // Impliment:
         // drop off nectar at hive
+
+        // Impliment:
+        // isExploring pathfinding
+    }
+
+    // neutralState()
+    // Reset all state values to neutral (AKA bee spawns in hive)
+    public void neutralState() {
+        foundFlower = false;
+        isExploring = false;
+        goingHome = false;
+        atTarget = false;
     }
 
     // recieveSignal()
@@ -62,37 +84,45 @@ public class BeeBehavior : MonoBehaviour
     //             0 for "go find flower"
     //             1 for "go home"
     // Post: bool - true if signal was recieved, else false
-    bool recieveSignal(int signal) {
-        // 0: Find flower
+    public bool recieveSignal(int signal) {
+        // 0: Exploring
         if (signal == 0) {
+            // Maintain state
             foundFlower = false;
             isExploring = true;
+            goingHome = false;
             atTarget = false;
+            
             return true;
         }
         // 1: Go home
         else if (signal == 1) {
+            // Maintain state
             goingHome = true;
             currentTarget = hive;
             atTarget = false;
+
             return true;
         }
         return false;
     }
 
-    private void explore(){
-        
+    // dropOffNectar()
+    // Called by Hive
+    // Pre:  none
+    // Post: returns nectar in inventory
+    public float dropOffNectar() {
+        float temp = nectar;
+        nectar = 0;
+        return temp;
     }
 
-
-    private void OnCollisionEnter(Collision other) {
-        Debug.Log("test");
+    private void OnCollision(Collision other) {
         if (other.gameObject.CompareTag("Hive")) {
             goingHome = false;
             atTarget = true;
         }
         if (other.gameObject.CompareTag("Flower")) {
-
             isExploring = false;
             foundFlower = true;
             atTarget = true;
